@@ -1,18 +1,18 @@
-import {useState} from "react";
+import {useState, useMemo} from "react";
 import reactLogo from "./../../assets/react.svg";
 import "./../../App.css";
 
-// const valorHeavy = (iterationNumber = 1000) => {
-//   for (let i = 0; i < iterationNumber; i++) {
-//     console.log("Ahi va un valor pesado")
-//   }
+const valorHeavy = (iterationNumber = 1000) => {
+  for (let i = 0; i < iterationNumber; i++) {
+    console.log("Ahi va un valor pesado")
+  }
 
-//   return `${iterationNumber} iteraciones realizadas`
-// }
+  return `${iterationNumber} iteraciones realizadas`
+}
 
 
 export const HookMemo = () => {
-	const [count, setCount] = useState(0);
+	const [count, setCount] = useState(500);
 	const [show, setShow] = useState(true);
 
 	const mostrar = () => {
@@ -22,6 +22,8 @@ export const HookMemo = () => {
 	const sumar = () => {
 		setCount((count) => count + 1);
 	};
+
+	const valorPesado = useMemo(() => valorHeavy(count), [count])
 
 	return (
 		<div className="App">
@@ -41,7 +43,7 @@ export const HookMemo = () => {
 				</button>
 			</div>
 			<hr />
-			<h4>Valor Pesado</h4>
+			<h4>{ valorPesado }</h4>
 		</div>
 	);
 };

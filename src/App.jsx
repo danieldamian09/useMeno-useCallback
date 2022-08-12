@@ -6,8 +6,8 @@ function App() {
 	return (
 		<>
       {/* <HookMemo /> */}
-      {/* <HookCallback /> */}
-      <Formulario />
+      <HookCallback />
+      {/* <Formulario /> */}
 		</>
 	);
 }

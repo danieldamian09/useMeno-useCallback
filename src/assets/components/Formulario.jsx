@@ -1,4 +1,5 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import { Mensaje } from './Mensaje';
 
 const Formulario = () => {
 	const [formData, setFormData] = useState({
@@ -6,11 +7,26 @@ const Formulario = () => {
 		email: "",
 	});
 
+	const {usuario, email} = formData
+
 	const handleChange = ({target}) => {
-    const { name, value } = target;
-    console.log(name, value);
+		const { name, value } = target
+
+		setFormData({
+			...formData,
+			[name]: value
+		})
+		
   };
   
+	// useEffect(() => {
+	// 	console.log("llamado de useEffect");
+	// }, [])
+	
+	// useEffect(() => {
+	// 	console.log("Validar si el usuario existe");
+	// }, [usuario])
+	
 
 	return (
 		<>
@@ -32,6 +48,7 @@ const Formulario = () => {
 				name="email"
 				onChange={handleChange}
 			/>
+			{ usuario === "Humberto" && <Mensaje />}
 		</>
 	);
 };
